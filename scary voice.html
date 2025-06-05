@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HACKED</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 50px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>⚠️ DEVICE BREACHED! ⚠️</h1>
+  <p>Do not close this window... Your system is compromised!</p>
+
+  <audio id="scaryAudio" loop>
+    <source src="https://www.myinstants.com/media/sounds/horror.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const audio = document.getElementById("scaryAudio");
+
+    // Try to autoplay after short delay to beat autoplay blockers
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        audio.volume = 1.0;
+        audio.play().catch(err => {
+          console.log("Autoplay blocked:", err);
+        });
+      }, 500); // wait half second for load
+    });
+
+    // Disable right click and keypress (simulate loss of control)
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    document.addEventListener("keydown", e => e.preventDefault());
+
+    // After 60 seconds stop the scary part
+    setTimeout(() => {
+      audio.pause();
+      document.body.innerHTML = "<h1 style='color: lime;'>✅ Security Check Passed</h1><p>System is stable.</p>";
+    }, 60000); // 1 minute
+  </script>
+</body>
+</html>
